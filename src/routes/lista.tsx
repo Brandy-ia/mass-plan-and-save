@@ -166,8 +166,8 @@ function ListaCompras() {
         </div>
       </section>
 
-      {/* CTA fijo */}
-      <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border p-4 shadow-lg">
+      {/* CTA fijo (encima del bottom nav) */}
+      <div className="fixed bottom-14 left-1/2 -translate-x-1/2 w-full max-w-md bg-card border-t border-border p-4 shadow-lg z-30">
         <button
           onClick={verDisponibilidad}
           disabled={verificando || items.length === 0}

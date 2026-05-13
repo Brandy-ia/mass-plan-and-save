@@ -14,7 +14,7 @@ function Index() {
   ];
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background pb-24">
       {/* Header amarillo Mass */}
       <header className="bg-primary px-5 pt-6 pb-8 rounded-b-3xl shadow-md">
         <div className="flex items-center justify-between">
@@ -59,19 +59,19 @@ function Index() {
       <section className="px-5 mt-5">
         <div className="grid grid-cols-4 gap-3 text-center">
           {[
-            { icon: Store, label: "Tiendas" },
-            { icon: Percent, label: "Ofertas" },
-            { icon: Package, label: "Marcas Mass" },
-            { icon: Tag, label: "Cupones" },
+            { icon: Store, label: "Tiendas", to: "/tiendas" as const },
+            { icon: Percent, label: "Ofertas", to: "/ofertas" as const },
+            { icon: Package, label: "Marcas", to: "/marcas" as const },
+            { icon: ShoppingCart, label: "Mi lista", to: "/lista" as const },
           ].map((it) => (
-            <button key={it.label} className="flex flex-col items-center gap-1.5">
+            <Link key={it.label} to={it.to} className="flex flex-col items-center gap-1.5">
               <span className="w-12 h-12 rounded-2xl bg-primary/30 flex items-center justify-center">
                 <it.icon className="w-5 h-5 text-secondary" />
               </span>
               <span className="text-[11px] font-medium text-foreground leading-tight">
                 {it.label}
               </span>
-            </button>
+            </Link>
           ))}
         </div>
       </section>
