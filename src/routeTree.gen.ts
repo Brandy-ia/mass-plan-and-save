@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TiendasRouteImport } from './routes/tiendas'
 import { Route as ListaRouteImport } from './routes/lista'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TiendasRoute = TiendasRouteImport.update({
+  id: '/tiendas',
+  path: '/tiendas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ListaRoute = ListaRouteImport.update({
   id: '/lista',
   path: '/lista',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/lista': typeof ListaRoute
+  '/tiendas': typeof TiendasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/lista': typeof ListaRoute
+  '/tiendas': typeof TiendasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/lista': typeof ListaRoute
+  '/tiendas': typeof TiendasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/lista'
+  fullPaths: '/' | '/lista' | '/tiendas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lista'
-  id: '__root__' | '/' | '/lista'
+  to: '/' | '/lista' | '/tiendas'
+  id: '__root__' | '/' | '/lista' | '/tiendas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ListaRoute: typeof ListaRoute
+  TiendasRoute: typeof TiendasRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tiendas': {
+      id: '/tiendas'
+      path: '/tiendas'
+      fullPath: '/tiendas'
+      preLoaderRoute: typeof TiendasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lista': {
       id: '/lista'
       path: '/lista'
@@ -71,7 +88,18 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ListaRoute: ListaRoute,
+  TiendasRoute: TiendasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
