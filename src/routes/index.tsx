@@ -14,7 +14,7 @@ function Index() {
   ];
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background pb-24">
       {/* Header amarillo Mass */}
       <header className="bg-primary px-5 pt-6 pb-8 rounded-b-3xl shadow-md">
         <div className="flex items-center justify-between">
