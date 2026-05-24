@@ -16,11 +16,14 @@ type Producto = {
 };
 
 const PRODUCTOS_INICIALES: Producto[] = [
-  { id: "1", nombre: "Arroz Bell's 5kg", precio: 16.9, cantidad: 1, marca: "Mass" },
-  { id: "2", nombre: "Aceite Primor 1L", precio: 7.9, cantidad: 2, marca: "Tradicional" },
-  { id: "3", nombre: "Leche Bell's 1L", precio: 3.5, cantidad: 3, marca: "Mass" },
-  { id: "4", nombre: "Fideos Don Vittorio 500g", precio: 3.2, cantidad: 2, marca: "Tradicional" },
-  { id: "5", nombre: "Detergente Bolívar 2kg", precio: 14.5, cantidad: 1, marca: "Tradicional" },
+  { id: "1", nombre: "Arroz Costeño Superior 5kg", precio: 26.9, cantidad: 1, marca: "Tradicional" },
+  { id: "2", nombre: "Aceite Primor Premium 1L", precio: 9.5, cantidad: 2, marca: "Tradicional" },
+  { id: "3", nombre: "Leche Gloria Evaporada 400g", precio: 4.2, cantidad: 3, marca: "Tradicional" },
+  { id: "4", nombre: "Fideos Don Vittorio Spaghetti 500g", precio: 3.5, cantidad: 2, marca: "Tradicional" },
+  { id: "5", nombre: "Detergente Bolívar Floral 2.6kg", precio: 24.9, cantidad: 1, marca: "Tradicional" },
+  { id: "6", nombre: "Azúcar Rubia Bell's 1kg", precio: 3.9, cantidad: 2, marca: "Mass" },
+  { id: "7", nombre: "Papel Higiénico Elite x12", precio: 19.9, cantidad: 1, marca: "Tradicional" },
+  { id: "8", nombre: "Atún Florida en aceite 170g", precio: 5.5, cantidad: 3, marca: "Tradicional" },
 ];
 
 function ListaCompras() {
@@ -44,7 +47,7 @@ function ListaCompras() {
   const verDisponibilidad = () => {
     setVerificando(true);
     setTimeout(() => {
-      const stocks: Producto["stock"][] = ["alto", "alto", "medio", "alto", "agotado"];
+      const stocks: Producto["stock"][] = ["alto", "alto", "medio", "alto", "agotado", "alto", "medio", "alto"];
       const conStock = items.map((it, idx) => ({ ...it, stock: stocks[idx % stocks.length] }));
       setResultado(conStock);
       setVerificando(false);

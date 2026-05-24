@@ -9,24 +9,24 @@ const NOTIFICACIONES = [
   {
     id: "1",
     icon: Percent,
-    titulo: "20% OFF en limpieza",
-    desc: "Detergentes y lejías Bell's con descuento hoy.",
+    titulo: "20% OFF en Detergente Bolívar 2.6kg",
+    desc: "Hoy a S/ 21.90 en tu Mass Av. Los Próceres.",
     tiempo: "Hace 10 min",
     nuevo: true,
   },
   {
     id: "2",
     icon: Gift,
-    titulo: "2x1 en yogures",
-    desc: "Solo en tu Mass Av. Los Próceres.",
+    titulo: "2x1 en Yogurt Gloria 1L",
+    desc: "Lleva 2 por S/ 7.90 — válido hoy.",
     tiempo: "Hace 1 h",
     nuevo: true,
   },
   {
     id: "3",
     icon: Clock,
-    titulo: "Últimas horas: arroz a S/ 16.90",
-    desc: "Termina hoy a las 10:00 PM.",
+    titulo: "Últimas horas: Arroz Costeño 5kg a S/ 23.90",
+    desc: "Promoción termina hoy a las 10:00 PM.",
     tiempo: "Hace 3 h",
     nuevo: false,
   },
@@ -34,15 +34,16 @@ const NOTIFICACIONES = [
     id: "4",
     icon: MapPin,
     titulo: "Nueva tienda cerca de ti",
-    desc: "Mass Canto Grande abrió a 1.2 km.",
+    desc: "Mass Av. Canto Grande abrió a 1.2 km de tu casa.",
     tiempo: "Ayer",
     nuevo: false,
   },
 ];
 
 const PROMOS = [
-  { id: "p1", titulo: "Combo desayuno", desc: "Leche + Pan + Mantequilla", precio: "S/ 9.90", color: "from-primary to-primary/70" },
-  { id: "p2", titulo: "Caja del hogar", desc: "Detergente + Lejía + Lavavajilla", precio: "S/ 18.50", color: "from-secondary to-secondary/70" },
+  { id: "p1", titulo: "Combo Desayuno", desc: "Leche Gloria + Pan Bimbo + Mantequilla Laive", precio: "S/ 12.90", color: "from-primary to-primary/70" },
+  { id: "p2", titulo: "Combo Hogar", desc: "Detergente Bolívar + Lejía Clorox + Ayudín", precio: "S/ 28.50", color: "from-secondary to-secondary/70" },
+  { id: "p3", titulo: "Combo Lonchera", desc: "Atún Florida + Galletas Soda Field + Frugos 1L", precio: "S/ 14.90", color: "from-primary to-primary/70" },
 ];
 
 function Ofertas() {
