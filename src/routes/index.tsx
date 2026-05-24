@@ -8,9 +8,12 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const ofertas = [
-    { nombre: "Aceite Primor 1L", precio: "S/ 7.90", antes: "S/ 9.50", desc: "-17%" },
-    { nombre: "Arroz Costeño 5kg", precio: "S/ 18.90", antes: "S/ 22.00", desc: "-14%" },
-    { nombre: "Detergente Bolívar 2kg", precio: "S/ 14.50", antes: "S/ 17.90", desc: "-19%" },
+    { nombre: "Aceite Primor Premium 1L", precio: "S/ 8.50", antes: "S/ 10.90", desc: "-22%" },
+    { nombre: "Arroz Costeño Superior 5kg", precio: "S/ 23.90", antes: "S/ 28.50", desc: "-16%" },
+    { nombre: "Leche Gloria Evaporada 400g", precio: "S/ 3.80", antes: "S/ 4.50", desc: "-15%" },
+    { nombre: "Detergente Bolívar Floral 2.6kg", precio: "S/ 21.90", antes: "S/ 26.90", desc: "-19%" },
+    { nombre: "Inca Kola 1.5L", precio: "S/ 5.50", antes: "S/ 6.90", desc: "-20%" },
+    { nombre: "Atún Florida en aceite 170g", precio: "S/ 4.90", antes: "S/ 6.20", desc: "-21%" },
   ];
 
   return (
