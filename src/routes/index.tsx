@@ -15,12 +15,12 @@ function Index() {
     "María";
   const avatar = user?.user_metadata?.avatar_url as string | undefined;
   const ofertas = [
-    { nombre: "Aceite Primor Premium 1L", precio: "S/ 8.50", antes: "S/ 10.90", desc: "-22%" },
-    { nombre: "Arroz Costeño Superior 5kg", precio: "S/ 23.90", antes: "S/ 28.50", desc: "-16%" },
-    { nombre: "Leche Gloria Evaporada 400g", precio: "S/ 3.80", antes: "S/ 4.50", desc: "-15%" },
-    { nombre: "Detergente Bolívar Floral 2.6kg", precio: "S/ 21.90", antes: "S/ 26.90", desc: "-19%" },
-    { nombre: "Inca Kola 1.5L", precio: "S/ 5.50", antes: "S/ 6.90", desc: "-20%" },
-    { nombre: "Atún Florida en aceite 170g", precio: "S/ 4.90", antes: "S/ 6.20", desc: "-21%" },
+    { nombre: "Aceite Primor Premium 1L", precio: "S/ 8.50", antes: "S/ 10.90", desc: "-22%", img: "/images/aceite-primor.webp" },
+    { nombre: "Arroz Costeño Superior 5kg", precio: "S/ 23.90", antes: "S/ 28.50", desc: "-16%", img: "/images/arroz-costeno.webp" },
+    { nombre: "Leche Gloria Evaporada 400g", precio: "S/ 3.80", antes: "S/ 4.50", desc: "-15%", img: "/images/leche-gloria.jfif" },
+    { nombre: "Detergente Bolívar Floral 2.6kg", precio: "S/ 21.90", antes: "S/ 26.90", desc: "-19%", img: "/images/detergente-bolivar.jfif" },
+    { nombre: "Inca Kola 1.5L", precio: "S/ 5.50", antes: "S/ 6.90", desc: "-20%", img: "/images/inka-kola.webp" },
+    { nombre: "Atún Florida en aceite 170g", precio: "S/ 4.90", antes: "S/ 6.20", desc: "-21%", img: "/images/atun-florida.jpeg" },
   ];
 
   return (
@@ -141,8 +141,8 @@ function Index() {
               key={o.nombre}
               className="bg-card rounded-2xl p-3 flex items-center gap-3 border border-border"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/30 flex items-center justify-center">
-                <Tag className="w-6 h-6 text-secondary" />
+              <div className="w-14 h-14 rounded-xl bg-primary/30 flex items-center justify-center overflow-hidden">
+                <img src={o.img} alt={o.nombre} className="w-full h-full object-cover" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-semibold text-foreground truncate">{o.nombre}</p>

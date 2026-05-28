@@ -8,17 +8,27 @@ export const Route = createFileRoute("/marcas")({
 
 const CATEGORIAS = ["Todos", "Abarrotes", "Limpieza", "Lácteos", "Bebidas"] as const;
 
-const PRODUCTOS = [
-  { id: "1", nombre: "Arroz Superior Bell's 5kg", cat: "Abarrotes", precio: 21.9, refPrecio: 28.5, ahorro: 23 },
-  { id: "2", nombre: "Aceite Vegetal Bell's 1L", cat: "Abarrotes", precio: 7.5, refPrecio: 10.9, ahorro: 31 },
-  { id: "3", nombre: "Azúcar Rubia Bell's 1kg", cat: "Abarrotes", precio: 3.9, refPrecio: 5.2, ahorro: 25 },
-  { id: "4", nombre: "Fideos Spaghetti Bell's 500g", cat: "Abarrotes", precio: 2.5, refPrecio: 3.8, ahorro: 34 },
-  { id: "5", nombre: "Leche Evaporada Bell's 400g", cat: "Lácteos", precio: 3.2, refPrecio: 4.5, ahorro: 29 },
+type Producto = {
+  id: string;
+  nombre: string;
+  cat: string;
+  precio: number;
+  refPrecio: number;
+  ahorro: number;
+  img?: string;
+};
+
+const PRODUCTOS: Producto[] = [
+  { id: "1", nombre: "Arroz Superior Bell's 5kg", cat: "Abarrotes", precio: 21.9, refPrecio: 28.5, ahorro: 23, img: "/images/arroz-costeno.webp" },
+  { id: "2", nombre: "Aceite Vegetal Bell's 1L", cat: "Abarrotes", precio: 7.5, refPrecio: 10.9, ahorro: 31, img: "/images/aceite-primor.webp" },
+  { id: "3", nombre: "Azúcar Rubia Bell's 1kg", cat: "Abarrotes", precio: 3.9, refPrecio: 5.2, ahorro: 25, img: "/images/azucar-bells.webp" },
+  { id: "4", nombre: "Fideos Spaghetti Bell's 500g", cat: "Abarrotes", precio: 2.5, refPrecio: 3.8, ahorro: 34, img: "/images/fideos-vittorio.jpeg" },
+  { id: "5", nombre: "Leche Evaporada Bell's 400g", cat: "Lácteos", precio: 3.2, refPrecio: 4.5, ahorro: 29, img: "/images/leche-gloria.jfif" },
   { id: "6", nombre: "Yogurt Bebible Bell's 1L", cat: "Lácteos", precio: 5.5, refPrecio: 7.9, ahorro: 30 },
   { id: "7", nombre: "Queso Fresco Bell's 200g", cat: "Lácteos", precio: 6.9, refPrecio: 9.5, ahorro: 27 },
-  { id: "8", nombre: "Detergente Bell's 2.6kg", cat: "Limpieza", precio: 18.9, refPrecio: 26.5, ahorro: 28 },
+  { id: "8", nombre: "Detergente Bell's 2.6kg", cat: "Limpieza", precio: 18.9, refPrecio: 26.5, ahorro: 28, img: "/images/detergente-bolivar.jfif" },
   { id: "9", nombre: "Lejía Bell's 1L", cat: "Limpieza", precio: 2.9, refPrecio: 4.2, ahorro: 31 },
-  { id: "10", nombre: "Papel Higiénico Bell's x12", cat: "Limpieza", precio: 14.9, refPrecio: 19.9, ahorro: 25 },
+  { id: "10", nombre: "Papel Higiénico Bell's x12", cat: "Limpieza", precio: 14.9, refPrecio: 19.9, ahorro: 25, img: "/images/papel-higienico.webp" },
   { id: "11", nombre: "Gaseosa Cola Bell's 3L", cat: "Bebidas", precio: 5.9, refPrecio: 8.5, ahorro: 30 },
   { id: "12", nombre: "Agua Mineral Bell's 2.5L", cat: "Bebidas", precio: 2.5, refPrecio: 3.5, ahorro: 28 },
 ];
@@ -66,8 +76,12 @@ function Marcas() {
         <div className="grid grid-cols-2 gap-3">
           {lista.map((p) => (
             <div key={p.id} className="bg-card rounded-2xl p-3 border border-border">
-              <div className="aspect-square rounded-xl bg-primary/30 flex items-center justify-center mb-2">
-                <Tag className="w-8 h-8 text-secondary" />
+              <div className="aspect-square rounded-xl bg-primary/30 flex items-center justify-center mb-2 overflow-hidden">
+                {p.img ? (
+                  <img src={p.img} alt={p.nombre} className="w-full h-full object-cover" />
+                ) : (
+                  <Tag className="w-8 h-8 text-secondary" />
+                )}
               </div>
               <p className="text-xs font-semibold text-foreground line-clamp-2 min-h-[32px]">
                 {p.nombre}

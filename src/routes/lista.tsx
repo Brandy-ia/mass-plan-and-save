@@ -13,17 +13,18 @@ type Producto = {
   cantidad: number;
   marca: "Mass" | "Tradicional";
   stock?: "alto" | "medio" | "agotado";
+  img?: string;
 };
 
 const PRODUCTOS_INICIALES: Producto[] = [
-  { id: "1", nombre: "Arroz Costeño Superior 5kg", precio: 26.9, cantidad: 1, marca: "Tradicional" },
-  { id: "2", nombre: "Aceite Primor Premium 1L", precio: 9.5, cantidad: 2, marca: "Tradicional" },
-  { id: "3", nombre: "Leche Gloria Evaporada 400g", precio: 4.2, cantidad: 3, marca: "Tradicional" },
-  { id: "4", nombre: "Fideos Don Vittorio Spaghetti 500g", precio: 3.5, cantidad: 2, marca: "Tradicional" },
-  { id: "5", nombre: "Detergente Bolívar Floral 2.6kg", precio: 24.9, cantidad: 1, marca: "Tradicional" },
-  { id: "6", nombre: "Azúcar Rubia Bell's 1kg", precio: 3.9, cantidad: 2, marca: "Mass" },
-  { id: "7", nombre: "Papel Higiénico Elite x12", precio: 19.9, cantidad: 1, marca: "Tradicional" },
-  { id: "8", nombre: "Atún Florida en aceite 170g", precio: 5.5, cantidad: 3, marca: "Tradicional" },
+  { id: "1", nombre: "Arroz Costeño Superior 5kg", precio: 26.9, cantidad: 1, marca: "Tradicional", img: "/images/arroz-costeno.webp" },
+  { id: "2", nombre: "Aceite Primor Premium 1L", precio: 9.5, cantidad: 2, marca: "Tradicional", img: "/images/aceite-primor.webp" },
+  { id: "3", nombre: "Leche Gloria Evaporada 400g", precio: 4.2, cantidad: 3, marca: "Tradicional", img: "/images/leche-gloria.jfif" },
+  { id: "4", nombre: "Fideos Don Vittorio Spaghetti 500g", precio: 3.5, cantidad: 2, marca: "Tradicional", img: "/images/fideos-vittorio.jpeg" },
+  { id: "5", nombre: "Detergente Bolívar Floral 2.6kg", precio: 24.9, cantidad: 1, marca: "Tradicional", img: "/images/detergente-bolivar.jfif" },
+  { id: "6", nombre: "Azúcar Rubia Bell's 1kg", precio: 3.9, cantidad: 2, marca: "Mass", img: "/images/azucar-bells.webp" },
+  { id: "7", nombre: "Papel Higiénico Elite x12", precio: 19.9, cantidad: 1, marca: "Tradicional", img: "/images/papel-higienico.webp" },
+  { id: "8", nombre: "Atún Florida en aceite 170g", precio: 5.5, cantidad: 3, marca: "Tradicional", img: "/images/atun-florida.jpeg" },
 ];
 
 function ListaCompras() {
@@ -96,8 +97,12 @@ function ListaCompras() {
                 key={it.id}
                 className="bg-card rounded-2xl p-3 border border-border flex items-center gap-3"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/30 flex items-center justify-center font-extrabold text-secondary text-xs">
-                  {it.marca === "Mass" ? "M" : "•"}
+                <div className="w-12 h-12 rounded-xl bg-primary/30 flex items-center justify-center overflow-hidden shrink-0">
+                  {it.img ? (
+                    <img src={it.img} alt={it.nombre} className="w-full h-full object-cover" />
+                  ) : (
+                    <span className="font-extrabold text-secondary text-xs">{it.marca === "Mass" ? "M" : "•"}</span>
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-foreground truncate">{it.nombre}</p>
