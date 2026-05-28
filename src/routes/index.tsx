@@ -1,12 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { MapPin, Bell, Search, ShoppingCart, Tag, Store, Percent, Package } from "lucide-react";
+import { MapPin, Bell, Search, ShoppingCart, Tag, Store, Percent, Package, LogIn, LogOut, User as UserIcon } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
 function Index() {
+  const { user, signOut } = useAuth();
+  const nombre =
+    (user?.user_metadata?.full_name as string | undefined)?.split(" ")[0] ??
+    (user?.email?.split("@")[0]) ??
+    "María";
+  const avatar = user?.user_metadata?.avatar_url as string | undefined;
   const ofertas = [
     { nombre: "Aceite Primor Premium 1L", precio: "S/ 8.50", antes: "S/ 10.90", desc: "-22%" },
     { nombre: "Arroz Costeño Superior 5kg", precio: "S/ 23.90", antes: "S/ 28.50", desc: "-16%" },
@@ -22,15 +29,40 @@ function Index() {
       <header className="bg-primary px-5 pt-6 pb-8 rounded-b-3xl shadow-md">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-xs text-primary-foreground/70 font-medium">¡Hola, María!</p>
+            <p className="text-xs text-primary-foreground/70 font-medium">¡Hola, {nombre}!</p>
             <h1 className="text-2xl font-extrabold text-primary-foreground tracking-tight">
               mass<span className="text-secondary">.</span>
             </h1>
           </div>
-          <button className="relative p-2 rounded-full bg-primary-foreground/10">
-            <Bell className="w-5 h-5 text-primary-foreground" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-secondary rounded-full" />
-          </button>
+          <div className="flex items-center gap-2">
+            <Link to="/ofertas" className="relative p-2 rounded-full bg-primary-foreground/10">
+              <Bell className="w-5 h-5 text-primary-foreground" />
+              <span className="absolute top-1 right-1 w-2 h-2 bg-secondary rounded-full" />
+            </Link>
+            {user ? (
+              <button
+                onClick={() => signOut()}
+                title="Cerrar sesión"
+                className="flex items-center gap-1.5 p-1 pr-2.5 rounded-full bg-primary-foreground/10 text-primary-foreground"
+              >
+                {avatar ? (
+                  <img src={avatar} alt="" className="w-7 h-7 rounded-full" />
+                ) : (
+                  <div className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center">
+                    <UserIcon className="w-4 h-4 text-secondary-foreground" />
+                  </div>
+                )}
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-xs font-bold"
+              >
+                <LogIn className="w-3.5 h-3.5" /> Ingresar
+              </Link>
+            )}
+          </div>
         </div>
 
         {/* Tienda más cercana */}
